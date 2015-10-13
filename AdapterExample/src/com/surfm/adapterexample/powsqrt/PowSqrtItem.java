@@ -1,11 +1,15 @@
 package com.surfm.adapterexample.powsqrt;
 
+import java.text.DecimalFormat;
+
 import com.surfm.adapterexample.R;
 
 import android.view.View;
 import android.widget.TextView;
 
 public class PowSqrtItem {
+	
+	private static final   DecimalFormat SQRT_NUMBER_FORMAT = new DecimalFormat("##.####");
 	
 	private View view;
 	
@@ -29,7 +33,7 @@ public class PowSqrtItem {
 		double sqrt = Math.sqrt(n);
 		numberView.setText(n+"");
 		powView.setText(pow+"");
-		sqrtView.setText(sqrt+"");
+		sqrtView.setText(SQRT_NUMBER_FORMAT.format(sqrt));
 	}
 
 }
