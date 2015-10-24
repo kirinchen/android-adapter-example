@@ -53,11 +53,18 @@
             android:inputType="number" />
 
         <Button
+            android:id="@+id/addNumberButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/addNumberButton"
             android:layout_weight="1"
             android:text="新增" />
+
+        <Button
+            android:id="@+id/editModeSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="唯讀模式" />
     </LinearLayout>
 
 </RelativeLayout>

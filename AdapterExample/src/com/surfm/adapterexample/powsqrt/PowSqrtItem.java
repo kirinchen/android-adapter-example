@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import com.surfm.adapterexample.R;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class PowSqrtItem {
@@ -14,6 +15,7 @@ public class PowSqrtItem {
 	private View view;
 	
 	private TextView numberView;
+	private EditText numberEdit;
 	private TextView powView;
 	private TextView sqrtView;
 	
@@ -23,17 +25,31 @@ public class PowSqrtItem {
 	}
 
 	private void injectViews() {
+		numberEdit = (EditText) view.findViewById(R.id.numberEdit);
 		numberView = (TextView) view.findViewById(R.id.number);
 		powView = (TextView) view.findViewById(R.id.pow);
 		sqrtView = (TextView) view.findViewById(R.id.sqrt);
 	}
 	
-	void setData(Integer n){
+	void setData(Integer n, boolean editable){
 		double pow = Math.pow(n, 2);
 		double sqrt = Math.sqrt(n);
 		numberView.setText(n+"");
+		numberEdit.setText(n+"");
 		powView.setText(pow+"");
 		sqrtView.setText(SQRT_NUMBER_FORMAT.format(sqrt));
+		setupEditMode(editable);
+
+	}
+	
+	private void setupEditMode(boolean editable){		
+		if(editable){
+			numberView.setVisibility(View.GONE);
+			numberEdit.setVisibility(View.VISIBLE);
+		}else{
+			numberView.setVisibility(View.VISIBLE);
+			numberEdit.setVisibility(View.GONE);
+		}
 	}
 
 }

@@ -15,6 +15,7 @@ import android.widget.BaseAdapter;
 public class PowSqrtAdapter extends BaseAdapter {
 
 	private List<Integer> list = new ArrayList<Integer>();
+	private boolean editable = false;
 
 	public void add(Integer i) {
 		list.add(i);
@@ -43,7 +44,7 @@ public class PowSqrtAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.powsqrtlist_item, null);
 		}
 		PowSqrtItem item = new PowSqrtItem(convertView);
-		item.setData(list.get(position));
+		item.setData(list.get(position),editable);
 		return convertView;
 	}
 
@@ -51,5 +52,16 @@ public class PowSqrtAdapter extends BaseAdapter {
 		list.remove(position);
 		notifyDataSetChanged();
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+		notifyDataSetChanged();
+	}
+	
+	
 
 }
