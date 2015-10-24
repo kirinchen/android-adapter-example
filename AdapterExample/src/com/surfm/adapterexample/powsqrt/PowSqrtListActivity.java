@@ -5,6 +5,7 @@ import com.surfm.adapterexample.R.id;
 import com.surfm.adapterexample.R.layout;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -58,8 +59,16 @@ public class PowSqrtListActivity extends Activity implements OnClickListener,OnI
 
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view,
-			int position, long id) {
-		adapter.deleteByIndex(position);
+			final int position, long id) {
+		//adapter.deleteByIndex(position);
+		DialogKit.showConfirmDialog(this, "¬O§_­n§R°£", android.R.string.ok, android.R.string.no, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				adapter.deleteByIndex(position);
+				dialog.dismiss();
+			}
+		}, null);
+		
 		return false;
 	}
 
