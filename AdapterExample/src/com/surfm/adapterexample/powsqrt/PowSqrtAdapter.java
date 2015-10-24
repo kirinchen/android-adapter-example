@@ -47,4 +47,9 @@ public class PowSqrtAdapter extends BaseAdapter {
 		return convertView;
 	}
 
+	public void deleteByIndex(int position) {
+		list.remove(position);
+		notifyDataSetChanged();
+	}
+
 }

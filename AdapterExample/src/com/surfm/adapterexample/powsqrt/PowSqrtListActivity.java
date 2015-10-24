@@ -8,11 +8,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class PowSqrtListActivity extends Activity implements OnClickListener {
+public class PowSqrtListActivity extends Activity implements OnClickListener,OnItemLongClickListener {
 	
 	private ListView listView;
 	private PowSqrtAdapter adapter = new PowSqrtAdapter();
@@ -30,6 +33,7 @@ public class PowSqrtListActivity extends Activity implements OnClickListener {
 		listView = (ListView) findViewById(R.id.list);
 		initAdapter();
 		listView.setAdapter(adapter);
+		listView.setOnItemLongClickListener(this);
 		inputNumberText = (EditText) findViewById(R.id.inputNumber);
 		addNumberButton = (Button) findViewById(R.id.addNumberButton);
 		addNumberButton.setOnClickListener(this);
@@ -43,9 +47,20 @@ public class PowSqrtListActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		int inputN = Integer.parseInt( inputNumberText.getText().toString());
-		adapter.add(inputN);
-		adapter.notifyDataSetChanged();
+		try {
+			int inputN = Integer.parseInt( inputNumberText.getText().toString());
+			adapter.add(inputN);
+			adapter.notifyDataSetChanged();
+		} catch (Exception e) {
+			Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+		}
+	}
+
+	@Override
+	public boolean onItemLongClick(AdapterView<?> parent, View view,
+			int position, long id) {
+		adapter.deleteByIndex(position);
+		return false;
 	}
 
 }
