@@ -78,7 +78,7 @@ public class PowSqrtListActivity extends Activity implements OnClickListener,
 	public void onClick(View v) {
 		try {
 			int inputN = Integer.parseInt(inputNumberText.getText().toString());
-			adapter.add(inputN);
+			adapter.addToSelect(inputN);
 			adapter.notifyDataSetChanged();
 		} catch (Exception e) {
 			Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();

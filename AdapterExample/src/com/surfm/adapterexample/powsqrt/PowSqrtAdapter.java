@@ -22,6 +22,14 @@ public class PowSqrtAdapter extends BaseAdapter {
 		list.add(i);
 	}
 
+	public void addToSelect(Integer inputN) {
+		if(selectIndex >= 0){
+			list.add(selectIndex,inputN);
+		}else{
+			add(inputN);
+		}
+	}
+
 	@Override
 	public int getCount() {
 		return list.size();
@@ -52,6 +60,7 @@ public class PowSqrtAdapter extends BaseAdapter {
 
 	public void deleteByIndex(int position) {
 		list.remove(position);
+		selectIndex = -1;
 		notifyDataSetChanged();
 	}
 
