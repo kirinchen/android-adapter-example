@@ -45,7 +45,7 @@ public class PowSqrtAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.powsqrtlist_item, null);
 		}
 		PowSqrtItem item = new PowSqrtItem(convertView);
-		item.setData(list.get(position),editable);
+		item.setData(list.get(position), editable);
 		item.setSelectBackground(selectIndex == position);
 		return convertView;
 	}
@@ -72,9 +72,13 @@ public class PowSqrtAdapter extends BaseAdapter {
 		this.selectIndex = selectIndex;
 		notifyDataSetChanged();
 	}
-	
-	
-	
-	
+
+	public void moveSelect(int i) {
+		Integer selectValue = list.get(selectIndex);
+		list.remove(selectIndex);
+		list.add(selectIndex + i, selectValue);
+		selectIndex = selectIndex + i;
+		notifyDataSetChanged();
+	}
 
 }
