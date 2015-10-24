@@ -10,13 +10,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class PowSqrtListActivity extends Activity implements OnClickListener,OnItemLongClickListener {
+public class PowSqrtListActivity extends Activity implements OnClickListener,OnItemLongClickListener,OnItemClickListener {
 	
 	private ListView listView;
 	private PowSqrtAdapter adapter = new PowSqrtAdapter();
@@ -35,6 +36,7 @@ public class PowSqrtListActivity extends Activity implements OnClickListener,OnI
 		initAdapter();
 		listView.setAdapter(adapter);
 		listView.setOnItemLongClickListener(this);
+		listView.setOnItemClickListener(this);
 		inputNumberText = (EditText) findViewById(R.id.inputNumber);
 		addNumberButton = (Button) findViewById(R.id.addNumberButton);
 		addNumberButton.setOnClickListener(this);
@@ -70,6 +72,12 @@ public class PowSqrtListActivity extends Activity implements OnClickListener,OnI
 		}, null);
 		
 		return false;
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		adapter.setSelectIndex(position);
 	}
 
 }

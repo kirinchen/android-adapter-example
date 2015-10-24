@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import com.surfm.adapterexample.R;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,7 +40,16 @@ public class PowSqrtItem {
 		powView.setText(pow+"");
 		sqrtView.setText(SQRT_NUMBER_FORMAT.format(sqrt));
 		setupEditMode(editable);
-
+	}
+	
+	void setSelectBackground(boolean select){
+		int colorI =0;
+		if(select){
+			colorI = Color.GREEN;
+		}else{
+			colorI = Color.BLACK;
+		}
+		view.setBackgroundColor(colorI);
 	}
 	
 	private void setupEditMode(boolean editable){		
