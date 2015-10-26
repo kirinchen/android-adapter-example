@@ -12,6 +12,7 @@ import android.widget.Button;
 public class MainActivity extends Activity implements OnClickListener {
 
 	private Button goPowSqrtButton;
+	private Button goSimpleAdapterButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,15 @@ public class MainActivity extends Activity implements OnClickListener {
 	private void injectView() {
 		goPowSqrtButton = (Button) findViewById(R.id.goToPowSqrt);
 		goPowSqrtButton.setOnClickListener(this);
+		goSimpleAdapterButton = (Button) findViewById(R.id.goToSimpleAdapter);
+		goSimpleAdapterButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent();
+				i.setClass(MainActivity.this, SimpleListViewActivity.class);
+				startActivity(i);
+			}
+		});
 		
 	}
 

@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".powsqrt.PowSqrtListActivity" >
         </activity>
+          <activity android:name=".SimpleListViewActivity" >
+        </activity>
     </application>
 
 </manifest>
