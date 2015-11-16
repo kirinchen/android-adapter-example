@@ -3,14 +3,17 @@ package com.surfm.gmaptest;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends Activity implements OnMapReadyCallback,
@@ -46,6 +50,36 @@ public class MainActivity extends Activity implements OnMapReadyCallback,
 		putMark(loc);
 
 		map.setOnMapClickListener(this);
+		
+		map.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+		      @Override
+		      public View getInfoWindow(Marker arg0) {
+		         return null;
+		      }
+
+		      @Override
+		      public View getInfoContents(Marker marker) {
+
+		        LinearLayout info = new LinearLayout(MainActivity.this);
+		        info.setOrientation(LinearLayout.VERTICAL);
+
+		        TextView title = new TextView(MainActivity.this);
+		        title.setTextColor(Color.BLACK);
+		        title.setGravity(Gravity.CENTER);
+		        title.setTypeface(null, Typeface.BOLD);
+		        title.setText(marker.getTitle());
+
+		        TextView snippet = new TextView(MainActivity.this);
+		        snippet.setTextColor(Color.RED);
+		        snippet.setText(marker.getSnippet());
+
+		        info.addView(title);
+		        info.addView(snippet);
+
+		      return info;
+		    }
+		});
 	}
 
 	private void putMark(LatLng loc) {
