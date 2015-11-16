@@ -562,7 +562,7 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f020035;
     }
     public static final class id {
-        public static final int action_settings=0x7f08002b;
+        public static final int action_settings=0x7f08002c;
         public static final int adjust_height=0x7f080007;
         public static final int adjust_width=0x7f080008;
         public static final int android_pay=0x7f080028;
@@ -577,6 +577,7 @@ containing a value of this type.
         public static final int buy_with_google=0x7f08001b;
         public static final int cast_notification_id=0x7f080000;
         public static final int classic=0x7f080022;
+        public static final int clearBtn=0x7f08002a;
         public static final int dark=0x7f080005;
         public static final int donate_with=0x7f08001c;
         public static final int donate_with_google=0x7f08001d;
@@ -590,7 +591,7 @@ containing a value of this type.
         public static final int icon_only=0x7f080001;
         public static final int light=0x7f080006;
         public static final int logo_only=0x7f08001e;
-        public static final int map=0x7f08002a;
+        public static final int map=0x7f08002b;
         public static final int match_parent=0x7f080016;
         public static final int monochrome=0x7f080027;
         public static final int none=0x7f080009;

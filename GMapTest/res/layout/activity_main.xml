@@ -1,5 +1,19 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-       android:id="@+id/map"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       class="com.google.android.gms.maps.MapFragment"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/clearBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Clear" />
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/clearBtn"
+        class="com.google.android.gms.maps.MapFragment" />
+
+</RelativeLayout>
